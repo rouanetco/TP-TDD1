@@ -3,6 +3,8 @@ package iut.tdd;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.print.DocFlavor.INPUT_STREAM;
+
 public class Convert {
 	
 	static HashMap<String, String> liste = new HashMap<String, String>();
@@ -24,11 +26,23 @@ public class Convert {
 			liste.put("14","quatorze");
 			liste.put("15", "quinze");
 			liste.put("16", "seize");
-							
+			liste.put("20", "vingt");
+			liste.put("30", "trente");
+			liste.put("40", "quarante");
+			liste.put("50", "cinquante");
+			liste.put("60", "soixante");
+			
 	}
 	public static String num2text(String input) {
-		return (liste.get(input));
-		 
+		if (liste.get(input) !=null){
+			return (liste.get(input));
+		}else if (input.substring(1,2).equals("1")){
+				String resultat =liste.get(input.substring(0,1)+"0")+"et un";
+				return resultat;
+		}else {
+				String resultat =liste.get(input.substring(0,1)+"0")+ " " + liste.get(input.substring(1,2));
+		 return resultat;
+		}
 	}
 	public static String text2num(String input) {
 		return null;
